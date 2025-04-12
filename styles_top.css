@@ -1,0 +1,66 @@
+/* style the top_section div horizontally to take up 3/4 width and organize the internal elements horizaontally*/
+/* textbox should take up 3/4 of the space and the other two divs wsohuls evenly take up the rest of the space */
+.top_section {
+    display: flex; /* use flexbox to arrange children in a row */
+    justify-content: space-between; /* distribute space between children */
+    width: 75%; /* take up 3/4 of the width of the parent element */
+    margin: auto; /* center the div horizontally */
+    background-color: lightblue; /* set background color */
+    padding: 20px; /* add some padding */
+}
+
+
+.flex_top {
+    display: flex;
+    flex-wrap: nowrap;
+    height: auto;
+}
+
+.flex_top > div {
+    width: 100px;
+    margin: 5px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+
+}
+
+.flex_top #subject_area {
+    flex: 3; /* take up 3/4 of the space */
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.flex_top #points_and_time {
+    flex: 1; /* share 1/4 of the space between the two displays */
+    background-color: lightgray;
+    font-size: 24px; /* rescale text */
+    text-align: center;
+    line-height: 50px; /* adjust line height */
+    border-radius: 10px;
+    padding: 10px; /* add some padding */
+}
+
+#go_button {
+    display: flex;
+    justify-content: center; /* center the button horizontally */
+    align-items: center; /* center the button vertically */
+    background-color: lightgreen; /* set background color */
+    color: white; /* set text color */
+    border: none; /* remove border */
+    font-size: 150%; /* rescale text */
+    padding: 10px 20px; /* add some padding */
+    transition-duration: 0.4s; /* add transition for hover effect */
+    cursor: pointer; /* change cursor to pointer on hover */
+    border-radius: 10px; /* round the corners */
+}
+
+#topic_input {
+    width: 95%; /* take up full width of the parent element */
+    height: 75%;
+    padding: 10px; /* add some padding */
+    font-size: 20px; /* rescale text */
+    border: 1px solid #ccc; /* add a border */
+    border-radius: 10px; /* round the corners */
+    text-align: center; /* center the text */
+}
