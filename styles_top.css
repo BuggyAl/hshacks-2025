@@ -50,9 +50,17 @@
     border: none; /* remove border */
     font-size: 150%; /* rescale text */
     padding: 10px 20px; /* add some padding */
-    transition-duration: 0.4s; /* add transition for hover effect */
     cursor: pointer; /* change cursor to pointer on hover */
     border-radius: 10px; /* round the corners */
+}
+
+#points_div {
+    height: 100%;
+    font-size: 175%;
+    text-align: center; /* center the text */
+    padding: 10px; /* add some padding */
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 #topic_input {

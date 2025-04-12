@@ -1,22 +1,75 @@
+#question_section {
+    border-style: solid;
+    font-size: 20px;
+}
+
 .flex_answer {
     display: flex; /* use flexbox to arrange children in a row */
-    justify-content: space-between; /* distribute space between children */
-    width: 95%; /* take up 3/4 of the width of the parent element */
+    justify-content: center; /* distribute space between children */
+    width: 98%; /* take up 3/4 of the width of the parent element */
+    height: 40px;
     margin: auto; /* center the div horizontally */
-    padding: 20px; /* add some padding */
+    padding:10px; /* add some padding */
+    /*border-style: solid;*/
 }
 
 
 .flex_answer > div {
-    width: 100px;
-    margin: 5px;
-    text-align: center;
-    line-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* center the button vertically */
     font-size: 30px;
 }
 
 .flex_bottom {
+    display: flex;
+    /* make it vertical */
+    flex-direction: column;
+    justify-content: center; /* distribute space between children */
+}
+
+#answer_section {
+    display: flex;
+    justify-content: center; /* distribute space between children */
+    width: 98%; /* take up 3/4 of the width of the parent element */
+    height: 40px;
+    margin: auto; /* center the div horizontally */
+    padding:10px; /* add some padding */
+    /*border-style: solid;*/
+}
+/* 
+#answer_section > div {
+    margin: 5px;
+} */
+
+#answer_input {
+    width: 95%;
+    height: 100%;
+}
+
+#answer_text_box {
+    width: 100%;
+    height: 100%;
+    font-size: 23px;
+}
+
+/* #answer_submit {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100px;
+    height: auto;
+} */
+
+#answer_button {
+    width: 100%;
+    height: 115%;
+}
+
+.flex_bottom {
+    /* display: none; */
     border-style: solid;
+
     border-width: 1px;
     margin: 2px;
 }
