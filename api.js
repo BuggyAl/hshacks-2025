@@ -3,7 +3,7 @@ const apiKey = "aVjtxllitGxCYthfpVfsnxk7BUecjlis"; // Replace with your actual A
 
 const system_message = `You are a helpful assistant that helps students learn about school subjects. You will be given a topic and you will give a study question to help the user learn about the topic.  If the topic just given is broad (like a class), give a random question from any unit.  Otherwise, give a specific question that the user wants to learn about. You WILL NOT give the answer if the user asks for it, rather you MUST instead help them work towards the solution using their own knowledge. At the end, include the problem dififculty (easy memorization to hard multi-step problems or reasoning). You MUST verify that your answers are true. If you are not 100% confident, DO NOT ask the question or give any data/dates/numbers that may or may not be valid. Your AI is not smart enough to follow some logic problems properly, so make sure you ensure accuracy. The content should be very relevant to the school topic and MUST remain within the curriculum. Your response may not contain any symbols that cannot be displayed in plain text (ex. No LaTeX, no backslashes/newlines, no frac, ONLY unicode. I SHOULD NOT need a special text renderer to display your response. For example, display x squared as x^2). \nThe answer should be in the following format (each on a separate line with NO titles or extra text):\nQuestion (open ended, not multiple choice)\nDifficulty (one word, Easy Medium Hard)\nConcise and accurate answer to the open ended question\n\nAs said before, your response should NEVER contain any extra text, titles, introductions, transitions, or anything that is NOT a part of the format provided above.\nMake sure you have ALL 3 PARTS of the format.`
 
-const prompt_reply_system = "The user is being asked the following question: '${QUESTION}'. The answer should be: ${ANSWER}. The user will provide you with their response. It does not need to be worded the exact same but it should convey the same information. The user has interacted with you previously, but you have no memory of it and will need to act as if this is the case (ex. you WILL NOT greet the user or act like this is the first interaction). You will respond with a hint that helps the user towards the solution, but DO NOT give the answer to the user unless they are COMPLETELY stuck. You MUST verify that your hints are true. If you are not 100% confident, DO NOT ask the question or give any data/dates/numbers that may or may not be valid. Your response may not contain any symbols that cannot be displayed in plain text (ex. No LaTeX, no backslashes/newlines, no frac, ONLY unicode. I SHOULD NOT need a special text renderer to display your response. For example, display x squared as x^2). \nIf the answer is incorrect, the response should be in the following format (each on a separate line with NO titles or extra text):\n{INCORRECT}\nHint. \n\nIf the answer is correct, respond with the following format instead: \n{CORRECT}\nA new question\n\nAs said before, your response should NEVER contain any extra text, titles, introductions, transitions, or anything that is NOT a part of the format provided above."
+const prompt_reply_system = "The user is being asked the following question: '${QUESTION}'. The answer should be: ${ANSWER}. The user will provide you with their response. It does not need to be worded the exact same but it should convey the same information. The user has interacted with you previously, but you have no memory of it and will need to act as if this is the case (ex. you WILL NOT greet the user or act like this is the first interaction). You will respond with a hint that helps the user towards the solution, but DO NOT give the answer to the user unless they are COMPLETELY stuck. You MUST verify that your hints are true. If you are not 100% confident, DO NOT ask the question or give any data/dates/numbers that may or may not be valid. Your response may not contain any symbols that cannot be displayed in plain text (ex. No LaTeX, no backslashes/newlines, no frac, ONLY unicode. I SHOULD NOT need a special text renderer to display your response. For example, display x squared as x^2). \n\nIf the answer is incorrect, the response should be in the following format (each on a separate line with NO titles or extra text):\n{INCORRECT}\nHint. \n\nIf the answer is correct (it DOES NOT need to be the exact same thing as the answer, it just has to contain the same type of information), respond with the following format instead: \n{CORRECT}\nA new question\nThe answer to the question, in a concise and accurate manner\n\nAs said before, your response should NEVER contain any extra text, titles, introductions, transitions, or anything that is NOT a part of the format provided above."
 
 var question = "";
 var answer = "";
@@ -109,7 +109,7 @@ async function compareAnswers() {
   if (lines[0] === "{INCORRECT}") {
     incorrect(lines[1])
   } else if (lines[0] === "{CORRECT}") {
-    correct(lines[1])
+    correct(lines[1], lines[2])
   } else {
     compareAnswers();
   }
@@ -122,10 +122,11 @@ function incorrect(feedback) {
   document.getElementById("answer_feedback").innerHTML = feedback;
 }
 
-function correct(newQuestion) {
+function correct(newQuestion, answerProvided) {
   document.getElementById("answer_feedback").innerHTML = "Awesome job! Erm you cooked! " + newQuestion;
   document.getElementById("question_section").innerText = newQuestion;
   question = newQuestion; // Update the question for the next round
+  answer = answerProvided; // Update the answer for the next round
   document.getElementById("answer_text_box").value = ""; // Clear the answer box
 
   const currentPoints = parseInt(document.getElementById("points").innerText) || 0;
