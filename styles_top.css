@@ -41,11 +41,21 @@
     padding: 10px; /* add some padding */
 }
 
-#go_button {
+#go_button_div {
     display: flex;
     justify-content: center; /* center the button horizontally */
     align-items: center; /* center the button vertically */
     background-color: lightgreen; /* set background color */
+    color: white; /* set text color */
+    border: none; /* remove border */
+    font-size: 150%; /* rescale text */
+    padding: 10px 20px; /* add some padding */
+    cursor: pointer; /* change cursor to pointer on hover */
+    border-radius: 10px; /* round the corners */
+}
+
+#go_button {
+    background-color: transparent;
     color: white; /* set text color */
     border: none; /* remove border */
     font-size: 150%; /* rescale text */

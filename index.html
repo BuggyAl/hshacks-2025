@@ -11,13 +11,13 @@
     <script src="api.js" defer></script>
 </head>
 <body>
-
+    <div id="sections" class="flex_sections">
     <div id="top_section" class="flex_top">
         <div id="subject_area">
             <input type="text" id="topic_input" placeholder="Enter a topic to study!">
         </div>
-        <div id="go_button">
-            <button id="go_button" onclick="go()"><b>GO</button>
+        <div id="go_button_div">
+            <button id="go_button"><b>GO</button>
         </div>
         <div id="points_div">
             <div id="points_div">🏆<span id="points">0</span></div>
@@ -27,19 +27,11 @@
     <br>
 
     <div id="bottom_section" class="flex_bottom">
-        <div id="question_section">‎</div>
-
-        <br>
-
-        <div id="hint_section" clas>
-            <div id="hint">
-                Hint 1: (probably not)
-            </div>
+        <div>
+            <div id="question_section">Question</div>
+            <div id="chat_section" class="flex_chat">
         </div>
-
-        <br>
-
-        <div>nope</div>
+        
         <div id="answer_section" class="flex_answer">
             <div id="answer_input">
                 <input type="text" id="answer_text_box" placeholder="Answer Here">
@@ -48,7 +40,11 @@
                 <button id="answer_button">Submit</button>
             </div>
         </div>
+
+        <div id="answer_feedback"></div>
+
     </div>
+    <div></div>
 
 </body>
 </html>

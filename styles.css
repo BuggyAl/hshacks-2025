@@ -1,3 +1,6 @@
 body {
     background-color: azure;
+    width: 80%;
+    margin: auto; /* center the div horizontally */
+    padding: 20px; /* add some padding */
 }
