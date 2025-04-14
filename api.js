@@ -1,5 +1,5 @@
 const url = "https://api.mistral.ai/v1/chat/completions";
-const apiKey = "n7F4TJHM34Wofih58b77vxdxFT9BywLB"; // Expires on April 18th, 2025
+const apiKey = "d43bd608373b4071ad0cc3abe073b48a0f52143aea6d42b65733a88046360fe0"; // Expires on April 18th, 2025
 
 const system_message = `You are a helpful assistant that helps students learn about school subjects. You will be given a topic and you will give a study question to help the user learn about the topic.  If the topic just given is broad (like a class), give a random question from any unit.  Otherwise, give a specific question that the user wants to learn about. You WILL NOT give the answer if the user asks for it, rather you MUST instead help them work towards the solution using their own knowledge. At the end, include the problem dififculty (easy memorization to hard multi-step problems or reasoning). You MUST verify that your answers are true. If you are not 100% confident, DO NOT ask the question or give any data/dates/numbers that may or may not be valid. Your AI is not smart enough to follow some logic problems properly, so make sure you ensure accuracy. The content should be very relevant to the school topic and MUST remain within the curriculum. Your response may not contain any symbols that cannot be displayed in plain text (ex. No LaTeX, no backslashes/newlines, no frac, ONLY unicode. I SHOULD NOT need a special text renderer to display your response. For example, display x squared as x^2). \nThe answer should be in the following format (each on a separate line with NO titles or extra text):\nQuestion (open ended, not multiple choice)\nDifficulty (one word, Easy Medium Hard)\nConcise and accurate answer to the open ended question\n\nAs said before, your response should NEVER contain any extra text, titles, introductions, transitions, or anything that is NOT a part of the format provided above.\nMake sure you have ALL 3 PARTS of the format.`
 
@@ -21,7 +21,7 @@ async function getQuestion() {
   goButtonDiv.style.backgroundColor = "#ccc"; // Change button color to indicate loading
   goButton.style.fontSize = "100%"; // Change font size to indicate loading
 
-  const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+  const response = await fetch('https://api.together.xyz/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ async function getQuestion() {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: 'mistral-large-latest',
+      model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
       temperature: 1,
       messages: [
         { role: 'system', content: system_message },
@@ -71,7 +71,7 @@ async function compareAnswers() {
   system_msg = system_msg + "\n\nThe answer to this question is:\n" + answer;
   system_msg = system_msg + "\n\nIf the following number is bigger than 5, use very obvious hints that almost give away the answer: " + attempts;
 
-  const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+  const response = await fetch('https://api.together.xyz/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ async function compareAnswers() {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: 'mistral-large-latest',
+      model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
       temperature: 1,
       messages: [
         { role: 'system', content: system_msg },
